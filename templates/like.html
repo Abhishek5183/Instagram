@@ -1,0 +1,199 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Reels</title>
+{% endblock %}
+
+{% block body_block %}
+<style>
+ 
+
+    .table_section{
+        height: 100vh;
+        overflow: auto;
+    }
+    table{
+        table-layout: fixed;
+    }
+    thead th{
+
+        top: 0;
+        background-color: #f6f9fc;
+        color: black;
+        padding: 10px;
+        font-size: 15px;
+
+    }
+    th,td{
+        padding: 15px 29px;
+        text-align: center;
+    }
+    th{
+        border-bottom: 1px solid #dddddd;
+    }
+    td img{
+        height: 60px;
+        width: 60px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+    tr:hover td{
+        color: #0298cf;
+        cursor: pointer;
+        background-color: #f6f9fc;
+    }
+    button{
+        outline: none;
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 4px;
+        background-color: blue;
+    }
+
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    .box{
+        box-sizing: border-box;
+        width: 360px;
+        height: 100vh;
+        border: 2px solid #3498db;
+        box-shadow: -3px -3px 7px #ffffff73,
+                    3px 3px 5px rgba(94, 104, 121, 0.288);
+        border-radius: 5px;
+        margin-top: 50px;
+        overflow: hidden;
+    }
+    img{
+        box-sizing: border-box;
+        width: 155px;
+        height: 149px;
+        border-radius: 50%;
+        margin:0;
+        border: 5px solid #0082e6;
+        padding: 3px;
+        background-color: white;
+    }
+    input[type='text'],
+    input[type='email']{
+        display: block;
+        box-sizing: border-box;
+        background: none;
+        color: black;
+        margin-bottom: 30px;
+        padding: 4px;
+        width: 220px;
+        border: none;
+        border-bottom: 1px solid #0082e6;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+        padding-top: 10px;
+        transition: 0.2s ease;
+
+    }
+    input[type='text']:focus,
+    input[type='email']:focus{
+        border-bottom: 2px solid black;
+        border-bottom-right-radius: 20px;
+        color: black;
+        transition: 0.2 ease;
+    }
+    button{
+        border: 1px solid #3498db;
+        background-color: black;
+        color: white;
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;
+        margin: 0px;
+        transition: all 0.3s ease;
+        }
+    
+    button:hover{
+        transform: scale(1.1);
+    }
+    .button{
+        border: 1px solid #3498db;
+        background-color: black;
+        color: white;
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;
+        margin: 0px;
+        transition: all 0.3s ease;
+        }
+    .button:hover{
+        transform: scale(1.1);
+    }
+
+
+    input[type='file']{
+        padding-top: 10px;
+    }
+    label{
+        box-sizing: border-box;
+        font-size: 18px;
+        background-color: black;
+        color: white;
+        border: 1px solid #3498db;
+        padding: 2px 12px;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+    label:hover{
+        background-color: #0082e6;
+        color: black;
+    }
+
+
+
+</style>
+
+<center>
+    <div class="box">
+            <div class="table_section">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><img src="{% static 'images/dhawan.jpg' %}" alt=""> dhawan</td>
+                            <td>Liked Your photo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'images/raj.jpg' %}" alt=""> Yuvaraj</td>
+                            <td>Liked Your photo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'images/roith.jpg' %}" alt=""> rohith</td>
+                            <td>Liked Your photo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'images/sachin.jpg' %}" alt=""> sachin</td>
+                            <td>Liked Your photo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'images/samson.jpg' %}" alt=""> samson</td>
+                            <td>Liked Your photo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'images/spider.jpg' %}" alt="">spider man</td>
+                            <td>Liked Your photo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'images/thala.jpg' %}" alt=""> Dhoni</td>
+                            <td>Liked Your photo</td>
+                        </tr>
+                        <tr>
+                            <td><img src="{% static 'images/virat.webp' %}" alt=""> Abhishek</td>
+                            <td>Liked Your photo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</center>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Reels</title>
+{% endblock %}
+
+{% block body_block %}
+
+<div class="card text-center">
+    <div class="card-header">
+      Post the image
+    </div>
+    <div class="card-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+            <label for="img">Select image:</label>
+            <input type="file" id="img" name="img"><br>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+</div>
+{% endblock %}

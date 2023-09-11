@@ -1,0 +1,110 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>Reels</title>
+{% endblock %}
+
+{% block body_block %}
+<style>
+    .search-box{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 40px;
+        background: #fafafa;
+        border: 1px solid #dfdfdf;
+        border-radius: 2px;
+        color: black;
+        text-align: center;
+ 
+    }
+    .search-box::placeholder{
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width:500px){
+        .search-box{
+            width: 300px;
+
+        }
+    }
+    .table_section{
+        height: 100vh;
+        overflow: auto;
+    }
+    table{
+        table-layout: fixed;
+    }
+    thead th{
+
+        top: 0;
+        background-color: #f6f9fc;
+        color: black;
+        padding: 10px;
+        font-size: 15px;
+
+    }
+    th,td{
+        padding: 15px 29px;
+        text-align: center;
+    }
+    th{
+        border-bottom: 1px solid #dddddd;
+    }
+    td img{
+        height: 60px;
+        width: 60px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+    tr:hover td{
+        color: #0298cf;
+        cursor: pointer;
+        background-color: #f6f9fc;
+    }
+    button{
+        outline: none;
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 4px;
+        background-color: blue;
+    }
+
+    ::-webkit-scrollbar{
+        display: none;
+    }
+
+
+
+
+</style>
+<nav class="navbar bg-dark">
+    <div class="nav-wrapper">
+        <input type="text" class="search-box" placeholder="search">
+    </div>
+</nav>
+<section class="main">
+    <div class="table_section">
+        <table>
+            <thead>
+                <tr>
+                    <th> Suggestion for you</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in userprofile_obj %}
+                <tr>
+                    <td><img src="{{ i.image.url }}" alt=""> {{ i.username }}</td>
+                    <td><button><a href="{% url 'followers_id' i.email %}" class="text-white pl-2 pr-2">Follow</a></button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Edit Profile</title>
+{% endblock %}
+
+{% block body_block %}
+<style>
+    .box{
+        box-sizing: border-box;
+        width: 360px;
+        height: 600px;
+        border: 2px solid #3498db;
+        box-shadow: -3px -3px 7px #ffffff73,
+                    3px 3px 5px rgba(94, 104, 121, 0.288);
+        border-radius: 5px;
+        margin-top: 50px;
+        overflow: hidden;
+    }
+    img{
+        box-sizing: border-box;
+        width: 155px;
+        height: 149px;
+        border-radius: 50%;
+        margin:0;
+        border: 5px solid #0082e6;
+        padding: 3px;
+        background-color: white;
+    }
+    input[type='text'],
+    input[type='email']{
+        display: block;
+        box-sizing: border-box;
+        background: none;
+        color: black;
+        margin-bottom: 30px;
+        padding: 4px;
+        width: 220px;
+        border: none;
+        border-bottom: 1px solid #0082e6;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+        padding-top: 10px;
+        transition: 0.2s ease;
+
+    }
+    input[type='text']:focus,
+    input[type='email']:focus{
+        border-bottom: 2px solid black;
+        border-bottom-right-radius: 20px;
+        color: black;
+        transition: 0.2 ease;
+    }
+    button{
+        border: 1px solid #3498db;
+        background-color: black;
+        color: white;
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;
+        margin: 0px;
+        transition: all 0.3s ease;
+        }
+    
+    button:hover{
+        transform: scale(1.1);
+    }
+    .button{
+        border: 1px solid #3498db;
+        background-color: black;
+        color: white;
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;
+        margin: 0px;
+        transition: all 0.3s ease;
+        }
+    .button:hover{
+        transform: scale(1.1);
+    }
+
+
+    input[type='file']{
+        padding-top: 10px;
+    }
+    label{
+        box-sizing: border-box;
+        font-size: 18px;
+        background-color: black;
+        color: white;
+        border: 1px solid #3498db;
+        padding: 2px 12px;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+    label:hover{
+        background-color: #0082e6;
+        color: black;
+    }
+</style>
+
+  <center>
+    {% for i in EDP %}
+    <div class="box">
+         <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <img src="{{ i.image.url }}" alt="">
+            <input type="file" name="image" id="image" value="{{ i.image.url }}">
+            <input type="text" name="username" id="username" placeholder="username" value="{{ i.username }}">
+            <input type="text" name="gender" id="gender" placeholder="gender" value="{{ i.gender }}">
+            <input type="text" name="bio" id="bio" placeholder="bio" value="{{ i.bio }}">
+            <input type="submit" value="Submit" style="float: left;margin:10px 18.2% 0 0;" class="button">
+         </form>
+         <a href="{% url 'dummy' %}"><button style="float: left;margin:10px 0 0 18.2%;">cancel</button></a>
+     </div>
+    {% endfor %}
+  </center>
+
+{% endblock %}

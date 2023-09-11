@@ -1,0 +1,50 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>Edit Profile</title>
+{% endblock %}
+
+{% block body_block %}
+<style>
+    .box{
+        box-sizing: border-box;
+        width: 360px;
+        height: 550px;
+        border: 2px solid #3498db;
+        box-shadow: -3px -3px 7px #ffffff73,
+                    3px 3px 5px rgba(94, 104, 121, 0.288);
+        border-radius: 5px;
+        margin-top: 50px;
+        overflow: hidden;
+    }
+    .post-image{
+        width: 100%;
+        height: 500px;
+        object-fit: center;
+    }
+    #option{
+        width: 20px;
+    }
+</style>
+
+  <center>
+  {% for i in temp %}
+  <div class="box">
+    <div class="info bg-dark">
+        <div class="user">
+            <div class="profile-pic">
+                <img src="{{ i.image.url }}" alt="">
+            </div>
+            <p class="username text-white">{{ i.username }}</p>
+        </div>
+        <a href="{% url 'dummy' %}"><img src="{% static 'images/cross.png'%}" alt="" id="option"></a>
+    </div>
+    <img src="{{ i.image.url }}" class="post-image" alt="">
+</div>
+  {% endfor %}
+
+  </center>
+
+{% endblock %}

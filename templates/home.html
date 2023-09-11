@@ -1,0 +1,362 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+        <title>Document</title>
+    {% endblock %}
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css'%}">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        background: white;
+        position: relative;
+        font-family: 'roboto',sans-serif;
+    }
+    *:focus{
+        outline: none;
+    }
+    .navbar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background: white;
+        border-bottom: 1px solid #dfdfdf;
+        display: flex;
+        justify-content: center;
+        padding: 5px 0;
+    }
+    .nav-wrapper{
+        width: 70%;
+        max-width: 1000px;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .brand-img{
+        height: 70px;
+        width: 150px;
+        margin-top: 5px;
+
+    }
+    .search-box{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 30px;
+        background: #fafafa;
+        border: 1px solid #dfdfdf;
+        border-radius: 2px;
+        color: black;
+        text-align: center;
+
+    }
+    .search-box::placeholder{
+        color: rgba(0, 0, 0, 0.5);
+    }
+    .icon{
+        color: black;
+    }
+    .nav-items{
+        height: 22px;
+        position: relative;
+    }
+    #icon{
+        height: 100%;
+        cursor: pointer;
+        margin: 0 10px;
+        display: inline-block;
+    }
+    .main{
+        width: 100%;
+        padding: 40px 0;
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+
+    }
+    .wrapper{
+        width: 70%;
+        max-width: 1000px;
+        grid-template-columns: 60% 40%;
+        grid-gap: 30px;
+    }
+    .left-col{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .status-wrapper{
+        width: 100%;
+        height: 120px;
+        background-color: #fff;
+        border: 1px solid #dfdfdf;
+        border-radius: 2px;
+        padding: 10px;
+        padding-right: 0;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        overflow-x: auto;
+    }
+    .status-wrapper::-webkit-scrollbar{
+        display: none;
+        
+    }
+    .status-card{
+        flex: 0 0 auto;
+        width: 80px;
+        max-width: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 25px;
+
+    }
+    .profile-pic{
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 3px;
+        background: linear-gradient(45deg,rgba(255,230,0),rgba(255,0,128) 80%);
+    }
+    .profile-pic>img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+
+    .username{
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 5px;
+        color: black;
+
+    }
+    .post{
+        width: 100%;
+        height: auto;
+        background: #fff;
+        border: 1px solid #dfdfdf;
+        margin-top: 40px;
+    }
+    .info{
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
+    }
+    .info>.user>.username{
+        width: auto;
+        font-weight: bold;
+        color: black;
+        font-size: 14px;
+        margin-left: 10px;
+    }
+    .info>#option{
+        height: 25px;
+        cursor: pointer;
+    }
+    .info>.user{
+        display: flex;
+        align-items: center;
+
+    }
+    .info>.user>.profile-pic{
+        height: 40px;
+        width: 40px;
+        padding: 0;
+        background: none;
+    }
+    .info>.user>.profile-pic>img{
+        border: none;
+    }
+    .post-image{
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+    .post-content{
+        width: 100%;
+        padding: 20px;
+
+    }
+    .Likes{
+        font-weight: bold;
+    }
+    .description {
+        margin: 10px 0;
+        font-size: 14px;
+        line-height: 20px;
+
+    }
+    .description > span{
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    .post-time{
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 12px;
+
+    }
+    .comment-wraper{
+        width: 100%;
+        height: 50px;
+        border-radius: 1px solid #dfdfdf;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .comment-wraper>#icon{
+        height: 30px;
+    }
+    .comment-box{
+        width: 80%;
+        height: 100%;
+        border: none;
+        outline: none;
+        font-size: 14px;
+    }
+    .comment-wraper>.comment-btn,.action-btn{
+        width: 70px;
+        height: 100%;
+        background:none;
+        border: none;
+        outline: none;
+        text-transform: capitalize;
+        font-size: 16px;
+        color: rgba(0, 162, 255);
+        opacity: 0.5;
+    }
+    .recation-wrapper{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        margin-top: -20px;
+        align-items: center;
+    }
+    #icon1{
+        height: 25px;
+        margin: 0;
+        margin-right: 20px;
+
+    }
+
+
+
+
+
+
+
+
+    
+
+
+
+    /*-------*/
+</style>
+
+<body>
+{% block body_block %}
+<nav class="navbar">
+    <div class="nav-wrapper">
+        <img src="{% static 'images/pngwing.com.png'%}" alt="" class="brand-img">
+        <div class="nav-items">
+            <a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass text-dark" id="icon"></i></a>
+            <i class="fa-solid fa-house" id="icon"></i>
+            <i class="fa-brands fa-facebook-messenger" id="icon"></i>
+           <a href="{% url 'post' %}"> <i class="fa-solid fa-plus text-dark" id="icon"></i></a>
+            <a href="{% url 'like' %}"><i class="fa-solid fa-heart text-dark" id="icon"></i></a>
+            <a href="{% url 'profile' %}"><i class="fa-solid fa-user text-dark"id="icon"></i></a>
+            <a href="{% url 'signout' %}">Logout</a>
+        </div>
+
+    </div>
+</nav>
+<section class="main">
+    <div class="wrapper ">
+        <div class="left-col">
+           <div class="status-wrapper">
+            {% for i in userprofile_obj %}
+            <a href="{% url 'story' i.email %} "><div class="status-card">
+                <div class="profile-pic">
+                  <img src="{{ i.image.url }}" alt="" >
+                </div>
+                <p class="username">{{ i.username }}</p>
+            </div></a>
+            {% endfor %}
+        </div>
+            {% for i in userprofile_obj %}
+            <div class="post">
+                <div class="info">
+                    <div class="user">
+                        <div class="profile-pic">
+                            <img src="{{ i.image.url }}" alt="">
+                        </div>
+                        <a href="{% url 'friends_profile' i.email %}"><h4 class="username pl-2">{{ i.username }}</h4></a>
+                    </div>
+                    <img src="{% static 'images/3dots.svg'%}" alt="" id="option">
+                    
+
+                </div>
+                <img src="{{ i.image.url }}" class="post-image" alt="">
+                <div class="post-content">
+                    <div class="reaction-wrapper">
+                        <i class="fa-solid fa-heart" id="icon1"></i>
+                        <i class="fa-solid fa-comment" id="icon1"></i>
+                        <i class="fa-solid fa-share" id="icon1"></i>
+                    </div>
+                    <p class="Likes">12</p>
+                    <p class="description"><span>{{ i.username }}</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem quae rerum consequuntur ducimus. Sequi rem laboriosam quasi ducimus dolor. Necessitatibus neque amet numquam exercitationem fuga cupiditate impedit, ducimus consectetur voluptas?</p>
+                    <p class="post-item">2 minutes ago</p>
+                </div>
+                <div class="comment-wraper">
+                    <i class="fa-solid fa-face-smile" id="icon"></i>
+                    <input type="text" name="" id="" class="comment-box" placeholder="add a comment">
+                    <button class="comment-btn">post</button>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+
+<script src="{% static 'js/jquery.min.js'%}"></script>
+<script src="{% static 'js/popper.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/mdb.min.js'%}"></script>
+
+<script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+</body>
+</html>
